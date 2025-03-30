@@ -23,7 +23,7 @@ function Footer() {
             className="col-span-1 md:col-span-2"
           >
             <div className="flex items-center space-x-4">
-              <h3 className="text-2xl font-light">The Aesthetic Trove</h3>
+              <h3 className="text-2xl font-light">Furnit</h3>
             </div>
             <p className="text-black leading-relaxed mt-4">
               He moonlights difficult-engrossed, sportsmen. Interested has all

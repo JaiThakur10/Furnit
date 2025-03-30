@@ -1,48 +1,67 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
 
 const products = [
   {
     id: 1,
-    name: "Gold Ring",
-    category: "rings",
-    image: "/rings.jpg",
-    price: "$199",
-    description: "A luxurious 18k gold ring.",
+    name: "Harmony Dining Table",
+    category: "dining",
+    image: "/dining-table.jpg",
+    price: "$1,299",
+    description: "Elegant dining set for modern homes.",
   },
   {
     id: 2,
-    name: "Silver Ring",
-    category: "rings",
-    image: "/rings.jpg",
-    price: "$99",
-    description: "A sleek and stylish silver ring.",
+    name: "Modern Dining Chairs",
+    category: "dining",
+    image: "/dining-chairs.jpg",
+    price: "$499",
+    description: "Set of 4 contemporary chairs.",
   },
   {
     id: 3,
-    name: "Diamond Pendant",
-    category: "pendants",
-    image: "/pendants.jpg",
-    price: "$299",
-    description: "A sparkling diamond pendant.",
+    name: "ElegantErgo Sofa",
+    category: "living",
+    image: "/sofa.jpg",
+    price: "$1,599",
+    description: "Contemporary living room essential.",
   },
   {
     id: 4,
-    name: "Pearl Necklace",
-    category: "necklaces",
-    image: "/necklace.jpg",
-    price: "399",
-    description: "A classic pearl necklace.",
+    name: "Designer Coffee Table",
+    category: "living",
+    image: "/coffee-table.jpg",
+    price: "$799",
+    description: "Statement piece for your lounge.",
   },
   {
     id: 5,
-    name: "Stud Earrings",
-    category: "earrings",
-    image: "/earrings.jpg",
-    price: "$149",
-    description: "Elegant stud earrings.",
+    name: "ClassicCraft Bedframe",
+    category: "bedroom",
+    image: "/bedframe.jpg",
+    price: "$899",
+    description: "Timeless bedroom centerpiece.",
+  },
+  {
+    id: 6,
+    name: "Luxury Nightstand",
+    category: "bedroom",
+    image: "/nightstand.jpg",
+    price: "$349",
+    description: "Elegant bedroom companion.",
   },
 ];
+
+const categoryDescriptions = {
+  all: "From sleek, modern designs that exude contemporary elegance to timeless classics that evoke warmth and nostalgia, our curated selection has something for every taste and lifestyle.",
+  dining:
+    "Discover our exquisite dining collection featuring handcrafted tables and chairs designed to elevate your dining experience with perfect harmony of form and function.",
+  living:
+    "Explore our living room essentials that combine comfort and style, creating inviting spaces for relaxation and entertainment with premium materials and craftsmanship.",
+  bedroom:
+    "Transform your bedroom into a sanctuary with our carefully curated collection of beds, nightstands, and dressers designed for restful sleep and elegant storage.",
+};
 
 const Shop = () => {
   const [selectedCategory, setSelectedCategory] = useState("all");
@@ -53,51 +72,114 @@ const Shop = () => {
       : products.filter((product) => product.category === selectedCategory);
 
   return (
-    <div className="container   mx-auto px-4 py-6">
-      <h1 className="text-center text-4xl md:text-7xl mt-6 font-light mb-8">
-        Shop
-      </h1>
-
-      {/* Category Buttons */}
-      <div className="flex overflow-x-auto md:justify-center space-x-2 md:space-x-4 mb-6 p-2">
-        {["all", "rings", "pendants", "necklaces", "earrings"].map(
-          (category) => (
-            <button
-              key={category}
-              onClick={() => setSelectedCategory(category)}
-              className={`px-4 py-2 text-sm md:text-base rounded-md border border-black transition-all ${
-                selectedCategory === category
-                  ? "bg-black text-white"
-                  : "bg-white"
-              }`}
-            >
-              {category.charAt(0).toUpperCase() + category.slice(1)}
-            </button>
-          )
-        )}
-      </div>
-
-      {/* Product Display */}
-      <div className="grid  grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        {filteredProducts.map((product) => (
-          <Link
-            to={`/product/${product.id}`}
-            key={product.id}
-            className="border p-2 rounded-md shadow-sm hover:shadow-lg transition block"
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      className="w-[80%] mx-auto px-4 py-20"
+    >
+      {/* Top Section */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 mb-16">
+        {/* Left Column */}
+        <div className="flex flex-col">
+          <motion.h1
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.1 }}
+            className="text-4xl md:text-5xl font-light mb-8"
           >
-            <img
-              src={product.image}
-              alt={product.name}
-              className="w-full h-40 object-cover rounded-md"
-            />
-            <h3 className="mt-2 text-center text-lg font-semibold">
-              {product.name}
-            </h3>
-            <p className="text-center text-gray-500">{product.price}</p>
-          </Link>
-        ))}
+            Store
+          </motion.h1>
+
+          <div className="space-y-4">
+            {["all", "dining", "living", "bedroom"].map((category, index) => (
+              <motion.button
+                key={category}
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{
+                  delay: 0.2 + index * 0.1,
+                  type: "spring",
+                  stiffness: 100,
+                }}
+                onClick={() => setSelectedCategory(category)}
+                className={`block text-2xl text-left ${
+                  selectedCategory === category
+                    ? "font-bold underline text-black"
+                    : "font-medium text-gray-600"
+                } transition-all duration-300 hover:text-black`}
+              >
+                {category === "all"
+                  ? "All Products"
+                  : category === "dining"
+                  ? "Dining"
+                  : category === "living"
+                  ? "Living"
+                  : "Bedroom"}
+              </motion.button>
+            ))}
+          </div>
+        </div>
+
+        {/* Right Column */}
+        <motion.div
+          key={selectedCategory}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.3 }}
+          className="text-base text-gray-600 leading-relaxed"
+        >
+          <p>{categoryDescriptions[selectedCategory]}</p>
+        </motion.div>
       </div>
-    </div>
+
+      {/* Product Grid */}
+      <AnimatePresence>
+        <motion.div
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
+          layout
+        >
+          {filteredProducts.map((product, index) => (
+            <motion.div
+              key={product.id}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{
+                delay: index * 0.1,
+                duration: 0.5,
+                type: "spring",
+                stiffness: 100,
+              }}
+              layout
+              className="group"
+            >
+              <Link
+                to={`/product/${product.id}`}
+                className="block border border-gray-200 p-4 hover:shadow-lg transition-all duration-300"
+              >
+                <div className="aspect-square overflow-hidden mb-4 rounded-lg">
+                  <motion.img
+                    src={product.image}
+                    alt={product.name}
+                    className="w-full h-full object-cover"
+                    whileHover={{ scale: 1.05 }}
+                    transition={{ duration: 0.3 }}
+                  />
+                </div>
+                <div className="p-2">
+                  <h3 className="text-xl font-semibold mb-1">{product.name}</h3>
+                  <p className="text-gray-500 mb-2">
+                    {product.category.charAt(0).toUpperCase() +
+                      product.category.slice(1)}
+                  </p>
+                  <p className="text-lg font-medium">{product.price}</p>
+                </div>
+              </Link>
+            </motion.div>
+          ))}
+        </motion.div>
+      </AnimatePresence>
+    </motion.div>
   );
 };
 

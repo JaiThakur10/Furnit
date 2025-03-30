@@ -133,7 +133,7 @@ const Header = () => {
                   to="/"
                   className="text-2xl font-bold tracking-tight hover:text-gray-700 transition-colors"
                 >
-                  Urban
+                  Furnit
                 </Link>
               </div>
 

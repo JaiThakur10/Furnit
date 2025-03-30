@@ -47,7 +47,7 @@ const HeroSection = () => {
               }}
               className="text-white text-6xl font-bold tracking-tight"
             >
-              Urban
+              Furnit
             </motion.h1>
           </motion.div>
         )}
