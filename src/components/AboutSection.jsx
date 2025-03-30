@@ -31,6 +31,15 @@ const AboutSection = () => {
             </span>
           </motion.div>
 
+          {/* Separator line with animation */}
+          <motion.div
+            initial={{ opacity: 0, scaleX: 0 }}
+            whileInView={{ opacity: 1, scaleX: 1 }}
+            transition={{ duration: 0.4, delay: 0.3 }}
+            viewport={{ once: true }}
+            className="w-26 h-px bg-white  left-0"
+          />
+
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -40,25 +49,24 @@ const AboutSection = () => {
           >
             <Link
               to="/about"
-              className="relative px-8 py-4 bg-white text-black rounded-full overflow-hidden font-medium text-lg flex items-center gap-3"
+              className="relative  text-white   overflow-hidden font-medium text-lg flex items-center  justify-start gap-2"
             >
               <span className="relative z-10">About</span>
-
               {/* Arrow circle */}
-              <span className="w-8 h-8 rounded-full bg-black flex items-center justify-center ml-2">
+              <span className="w-8 h-8 rounded-full bg-whtie border border-white  flex items-center justify-center ml-2">
                 <svg
-                  width="12"
-                  height="12"
+                  width="16"
+                  height="16"
                   viewBox="0 0 24 24"
                   fill="none"
                   stroke="currentColor"
                   strokeWidth="2"
-                  className="transform rotate-[60deg] transition-transform group-hover:translate-x-1 group-hover:-translate-y-1"
+                  className="transform rotate-[-60deg] transition-transform group-hover:translate-x-1 group-hover:-translate-y-1"
                 >
                   <path d="M5 12h14M12 5l7 7-7 7"></path>
                 </svg>
               </span>
-              <span className="absolute inset-0 bg-gray-200 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+              <span className="absolute inset-0 opacity-0 g transition-opacity duration-300"></span>
             </Link>
           </motion.div>
         </div>

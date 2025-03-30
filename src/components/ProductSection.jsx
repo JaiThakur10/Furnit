@@ -6,21 +6,21 @@ const ProductsSection = () => {
     {
       name: "Harmony Dining Table Set",
       category: "Dining Room",
-      image: "/sofa3.jpg",
+      image: "/sofa5.jpg",
       price: "$1,299",
       id: "harmony-dining-table",
     },
     {
       name: "ClassicCraft Bedframe",
       category: "Bedroom",
-      image: "/sofa3.jpg",
+      image: "/sofa2.jpg",
       price: "$899",
       id: "classiccraft-bedframe",
     },
     {
       name: "ElegantErgo Sofa",
       category: "Living Room",
-      image: "/sofa3.jpg",
+      image: "/sofa4.jpg",
       price: "$1,599",
       id: "elegantergo-sofa",
     },
@@ -33,27 +33,54 @@ const ProductsSection = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 mb-16">
           {/* Left Column - Heading and Button */}
           <div className="flex flex-col">
-            <motion.h2
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
-              className="text-4xl md:text-5xl font-bold mb-8"
+              className="mb-8"
             >
-              Our products
-            </motion.h2>
+              <h2 className="text-4xl md:text-5xl font-bold">
+                <span className="block">Our</span>
+                <span className="block">products</span>
+              </h2>
+            </motion.div>
+
+            {/* Separator line with animation */}
+            <motion.div
+              initial={{ opacity: 0, scaleX: 0 }}
+              whileInView={{ opacity: 1, scaleX: 1 }}
+              transition={{ duration: 0.4, delay: 0.3 }}
+              viewport={{ once: true }}
+              className="w-20 h-px bg-black  left-0"
+            />
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
               viewport={{ once: true }}
+              className="relative group inline-block"
             >
               <Link
                 to="/shop"
-                className="inline-block px-8 py-3 bg-black text-white rounded-full font-medium text-lg hover:bg-gray-800 transition-colors duration-300"
+                className="inline-flex items-center overflow-hidden  py-3  text-black font-medium text-lg  transition-colors duration-300"
               >
-                Shop All
+                <span className="relative z-10">Store</span>
+                {/* Arrow circle */}
+                <span className="w-8 h-8 rounded-full bg-white border border-black flex items-center justify-center ml-2">
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    className="transform rotate-[-60deg] transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"
+                  >
+                    <path d="M5 12h14M12 5l7 7-7 7"></path>
+                  </svg>
+                </span>
               </Link>
             </motion.div>
           </div>
@@ -77,7 +104,7 @@ const ProductsSection = () => {
         </div>
 
         {/* Product Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {products.map((product, index) => (
             <motion.div
               key={product.name}
@@ -88,18 +115,20 @@ const ProductsSection = () => {
               className="group border border-black"
             >
               <Link to={`/product/${product.id}`} className="block h-full">
-                <div className="aspect-[3/4] overflow-hidden mb-4 p-4">
+                <div className="aspect-[4/3] overflow-hidden mb-3 p-3">
                   <img
                     src={product.image}
                     alt={product.name}
-                    className="w-full h-3/4 object-cover transition-transform duration-500 group-hover:scale-105"
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                 </div>
-                <div className="p-4">
-                  <h3 className="text-xl font-bold mb-1">{product.name}</h3>
-                  <p className="text-gray-500 mb-2">{product.category}</p>
-                  <p className="text-lg font-medium mb-4">{product.price}</p>
-                  <button className="w-full py-2 bg-black text-white hover:bg-gray-800 transition-colors duration-300 border border-black">
+                <div className="p-3 space-y-2">
+                  <h3 className="text-lg font-bold line-clamp-1">
+                    {product.name}
+                  </h3>
+                  <p className="text-sm text-gray-500">{product.category}</p>
+                  <p className="text-base font-medium">{product.price}</p>
+                  <button className="w-full py-2 text-sm bg-white hover:bg-black text-black hover:text-white  transition-colors duration-300 border border-black">
                     View Product
                   </button>
                 </div>

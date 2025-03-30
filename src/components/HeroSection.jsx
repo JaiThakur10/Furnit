@@ -131,7 +131,7 @@ const HeroSection = () => {
                   }}
                   className="absolute bottom-20"
                 >
-                  <button className="bg-white text-black px-8 py-3 text-lg font-medium rounded-full hover:bg-opacity-90 transition-all duration-300 shadow-lg hover:scale-105 transform">
+                  <button className="bg-black hover:bg-white  hover:text-black text-white px-8 py-3 text-lg font-medium border border-black hover:bg-opacity-90 transition-all duration-300 shadow-lg hover:scale-105 transform">
                     Shop Now
                   </button>
                 </motion.div>

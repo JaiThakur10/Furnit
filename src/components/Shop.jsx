@@ -79,14 +79,14 @@ const Shop = () => {
       className="w-[80%] mx-auto px-4 py-20"
     >
       {/* Top Section */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 mb-16">
+      <div className="grid grid-cols-1  mt-10 md:grid-cols-2 gap-8 md:gap-16 mb-16">
         {/* Left Column */}
         <div className="flex flex-col">
           <motion.h1
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.1 }}
-            className="text-4xl md:text-5xl font-light mb-8"
+            className="text-4xl md:text-6xl font-bold mb-8"
           >
             Store
           </motion.h1>
